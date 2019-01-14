@@ -20,7 +20,9 @@ _pure_set_default pure_symbol_horizontal_bar "—"
 # Base colors
 _pure_set_default pure_color_blue (set_color blue)
 _pure_set_default pure_color_cyan (set_color cyan)
-_pure_set_default pure_color_gray (set_color brblack)
+
+# changing the hex code for grey to be compatible with solraized
+_pure_set_default pure_color_gray (set_color 586e75)
 _pure_set_default pure_color_magenta (set_color magenta)
 _pure_set_default pure_color_normal (set_color normal)
 _pure_set_default pure_color_red (set_color red)
