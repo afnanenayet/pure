@@ -1,22 +1,12 @@
-[travis-link]: https://travis-ci.org/rafaelrinaldi/pure "TravisCI"
-[travis-badge]: https://travis-ci.org/rafaelrinaldi/pure.svg?branch=master
-[fish-2.5]: https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square "Support Fish 2.5"
-[fish-2.6]: https://img.shields.io/badge/fish-v2.6.0-007EC7.svg?style=flat-square "Support Fish 2.6"
-[fish-2.7.1]: https://img.shields.io/badge/fish-v2.7.1.0-007EC7.svg?style=flat-square "Support Fish 2.7.1"
-[fish-3.0.0]: https://img.shields.io/badge/fish-v3.0.0.0-007EC7.svg?style=flat-square "Support Fish 3.0.0"
-[changelog-2.5]: https://github.com/fish-shell/fish-shell/releases/tag/2.5.0 "Changelog Fish 2.5"
-[changelog-2.6]: https://github.com/fish-shell/fish-shell/releases/tag/2.6.0 "Changelog Fish 2.6"
-[changelog-2.7.1]: https://github.com/fish-shell/fish-shell/releases/tag/2.7.1 "Changelog Fish 2.7.1"
-[changelog-3.0.0]: https://github.com/fish-shell/fish-shell/releases/tag/3.0.0 "Changelog Fish 3.0.0"
+> ##### ✋ Psst! Migrating from v1.x to v2.x? We got you. Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v2.0.0) and happy upgrading!
 
 # pure [![travis-badge]][travis-link] ![fish-2.5] ![fish-2.6] ![fish-2.7.1] ![fish-3.0.0] 
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
-
 <div align=center>
-  <a href="screenshot-dark.png" target=blank><img width=440 src=screenshot-dark.png alt="Pure with dark colorscheme"></a>
-  <a href="screenshot-light.png" target=blank><img width=440 src=screenshot-light.png alt="Pure with light colorscheme"></a>
+  <a href="screenshot-dark.png" target=blank><img width=440 src=https://i.imgur.com/BHxUohR.png alt="Pure with dark colorscheme"></a>
+  <a href="screenshot-light.png" target=blank><img width=440 src=https://i.imgur.com/qJdonqo.png alt="Pure with light colorscheme"></a>
 </div>
 
 ## Install
@@ -72,79 +62,51 @@ fundle install;
 - Display `Python` _virtualenv_ when activated ;
 - Fine control over **colors** ;
 - Right prompt control.
+- Display `VI` mode and custom symbol for non-insert mode.
 
 ## Configuration
 
 You can tweak pretty much everything in `pure` by overriding variables in your `config.fish` file.
 
-### Prompt Symbol
-| Option                          | Description    | Default value         |
-| :------------------------------ | :------------- | :-------------------- |
-| **`pure_symbol_prompt`**        | Prompt symbol. | `❯`                   |
-| **`pure_color_symbol_error`**   |                | `$pure_color_red`     |
-| **`pure_color_symbol_success`** |                | `$pure_color_magenta` |
+#### Prompt Symbol
 
-### Git
+| Option                                 | Default | Description                                          |
+| :------------------------------------- | :------ | :--------------------------------------------------- |
+| **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
+| **`pure_symbol_reverse_prompt`** | `❮`  | VI non-insert mode symbol.
+| **`pure_right_prompt`**                | ` `       | Content of the right prompt.                         |
+| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
+| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
+| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes). |
+| **`pure_symbol_title_bar_separator`**  | `—`    |
 
-| Option                           | Description                                        | Default value      |
-| :------------------------------- | :------------------------------------------------- | :----------------- |
-| **`pure_symbol_git_arrow_down`** | Symbol for branch ahead (commits to push).         | `⇣`                |
-| **`pure_symbol_git_arrow_up`**   | Symbol for branch being (commits to pull).         | `⇡`                |
-| **`pure_symbol_git_dirty`**      | Symbol for dirty repository (uncommitted changes). | `*`                |
-| **`pure_color_git_arrows`**      |                                                    | `$pure_color_cyan` |
-| **`pure_color_git_branch`**      |                                                    | `$pure_color_gray` |
-| **`pure_color_git_dirty`**       |                                                    | `$pure_color_gray` |
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
 
-### Terminal Title
-| Option                           | Description                                                                         | Default value |
-| :------------------------------- | :---------------------------------------------------------------------------------- | :------------ |
-| **`pure_symbol_horizontal_bar`** | Separator for the terminal title between `current working directory` and `command`. | `—`          |
+#### Features
 
-### Base Colors
-| Option                   | Default value         |
+| Option                                | Default | Description                                                       |
+| :------------------------------------ | :------ | :---------------------------------------------------------------- |
+| **`pure_threshold_command_duration`** | `5`     | Show command duration when above this value (seconds).            |
+| **`pure_separate_prompt_on_error`**   | `false` | Show last command [exit code as a separate character][exit-code]. |
+| **`pure_begin_prompt_with_current_directory`** | `true` | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_. |
+| **`pure_reverse_prompt_symbol_in_vimode`** | `true` | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`.
+
+#### Colors
+
+| Option                   | Default               |
 | :----------------------- | :-------------------- |
-| **`pure_color_blue`**    | `(set_color blue)`    |
-| **`pure_color_cyan`**    | `(set_color cyan)`    |
-| **`pure_color_gray`**    | `(set_color brblack)` |
-| **`pure_color_magenta`** | `(set_color magenta)` |
+| **Base Colors**          |
+| **`pure_color_primary`** | `(set_color blue)`    |
+| **`pure_color_info`**    | `(set_color cyan)`    |
+| **`pure_color_mute`**    | `(set_color brblack)` |
+| **`pure_color_success`** | `(set_color magenta)` |
 | **`pure_color_normal`**  | `(set_color normal)`  |
-| **`pure_color_red`**     | `(set_color red)`     |
-| **`pure_color_white`**   | `(set_color white)`   |
-| **`pure_color_yellow`**  | `(set_color yellow)`  |
+| **`pure_color_danger`**  | `(set_color red)`     |
+| **`pure_color_light`**   | `(set_color white)`   |
+| **`pure_color_warning`** | `(set_color yellow)`  |
+| **`pure_color_dark`**    | `(set_color black)`   |
 
-### Components Colors
-| Option                           | Default value       |
-| :------------------------------- | :------------------ |
-| **`pure_color_current_folder`**  | `$pure_color_blue`  |
-| **`pure_color_ssh_host`**        | `$pure_color_gray`  |
-| **`pure_color_ssh_separator`**   | `$pure_color_gray`  |
-| **`pure_color_ssh_user_normal`** | `$pure_color_gray`  |
-| **`pure_color_ssh_user_root`**   | `$pure_color_white` |
-| **`pure_color_virtualenv`**      | `$pure_color_gray`  |
-
-
-### Maximum Execution Time
-| Option                            | Description                                                                     | Default value        |
-| :-------------------------------- | :------------------------------------------------------------------------------ | :------------------- |
-| **`pure_command_max_exec_time`**  | Maximum execution time of a process before its run time is shown when it exits. | `5`                  |
-| **`pure_color_command_duration`** |                                                                                 | `$pure_color_yellow` |
-
-
-### Miscellaneous
-| Option                                         | Description                                                                                                                                                    | Default value |
-| :--------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
-| **`pure_prompt_begin_with_current_directory`** | `true`: _current directory_, _git_, _user@hostname (ssh-only)_, _command duration_.<br/>`false`: _user@hostname (ssh-only)_, _current directory_, _git_, _command duration_. | `true`        |
-| **`pure_separate_prompt_on_error`**            | Show exit code of last command as a separate prompt character [:information_source:][exit-code]                                                                | `false`       |
-
-
-[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
-
-### Right Prompt
-| Option                        | Description             | Default value        |
-| :---------------------------- | :---------------------- | :------------------- |
-| **`pure_right_prompt`**       | Content of right prompt | `""`                 |
-| **`pure_color_right_prompt`** |                         | `$pure_color_normal` |
+:information_source:: Want more customization? See `$HOME/.config/fish/conf.d/pure.fish` for available variables.
 
 
 ## Tests
@@ -167,5 +129,17 @@ MIT © [Rafael Rinaldi](http://rinaldi.io)
 ---
 
 <p align="center">
-  <a href="https://buymeacoff.ee/rinaldi" title="Buy me a coffee">Buy me a ☕</a>
+<a href="https://buymeacoff.ee/rinaldi" title="Buy me a coffee">Buy me a ☕</a>
 </p>
+
+[travis-link]: https://travis-ci.org/rafaelrinaldi/pure "TravisCI"
+[travis-badge]: https://travis-ci.org/rafaelrinaldi/pure.svg?branch=master
+[fish-2.5]: https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square "Support Fish 2.5"
+[fish-2.6]: https://img.shields.io/badge/fish-v2.6.0-007EC7.svg?style=flat-square "Support Fish 2.6"
+[fish-2.7.1]: https://img.shields.io/badge/fish-v2.7.1.0-007EC7.svg?style=flat-square "Support Fish 2.7.1"
+[fish-3.0.0]: https://img.shields.io/badge/fish-v3.0.0.0-007EC7.svg?style=flat-square "Support Fish 3.0.0"
+[changelog-2.5]: https://github.com/fish-shell/fish-shell/releases/tag/2.5.0 "Changelog Fish 2.5"
+[changelog-2.6]: https://github.com/fish-shell/fish-shell/releases/tag/2.6.0 "Changelog Fish 2.6"
+[changelog-2.7.1]: https://github.com/fish-shell/fish-shell/releases/tag/2.7.1 "Changelog Fish 2.7.1"
+[changelog-3.0.0]: https://github.com/fish-shell/fish-shell/releases/tag/3.0.0 "Changelog Fish 3.0.0"
+[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
