@@ -3,7 +3,7 @@ set --universal pure_version 2.1.1 # used for bug report
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
 _pure_set_default pure_color_info (set_color cyan)
-_pure_set_default pure_color_mute (set_color brblack)
+_pure_set_default pure_color_mute (set_color 586E75)
 _pure_set_default pure_color_success (set_color magenta)
 _pure_set_default pure_color_normal (set_color normal)
 _pure_set_default pure_color_danger (set_color red)
@@ -39,7 +39,7 @@ _pure_set_default pure_color_ssh_user_root $pure_color_light
 _pure_set_default pure_color_blue (set_color blue)
 _pure_set_default pure_color_cyan (set_color cyan)
 
-# changing the hex code for grey to be compatible with solraized
+# changing the hex code for grey to be compatible with solarized
 _pure_set_default pure_color_gray (set_color 586E75)
 _pure_set_default pure_color_magenta (set_color magenta)
 _pure_set_default pure_color_normal (set_color normal)
