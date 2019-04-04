@@ -1,4 +1,4 @@
-set --universal pure_version 2.1.1 # used for bug report
+set --universal pure_version 2.1.4 # used for bug report
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
@@ -63,8 +63,6 @@ _pure_set_default pure_color_virtualenv $pure_color_gray
 
 # Virtualenv for Pyhon
 _pure_set_default pure_color_virtualenv $pure_color_mute
-# Deactivate the default virtualenv prompt so that we can add our own
-set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
@@ -91,6 +89,3 @@ _pure_set_default pure_reverse_prompt_symbol_in_vimode true
 
 # Title
 _pure_set_default pure_symbol_title_bar_separator "—"
-
-# Whether or not is a fresh session
-set --global _pure_fresh_session true
